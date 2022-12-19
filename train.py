@@ -52,7 +52,7 @@ def main(args):
     batch_size = args.batch_size
 
     # 用来保存训练以及验证过程中信息
-    results_file = "results{}.txt".format(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+    results_file = "logs/results{}.txt".format(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
     train_dataset = DUTSDataset(args.data_path, train=True, transforms=SODPresetTrain([512, 512], crop_size=512))
     val_dataset = DUTSDataset(args.data_path, train=False, transforms=SODPresetEval([512, 512]))
