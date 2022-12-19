@@ -142,7 +142,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch u2net training")
 
-    parser.add_argument("--data-path", default="E:\\datasets\\building_seg", help="DUTS root")
+    parser.add_argument("--data-path", default="building_seg", help="DUTS root")
     parser.add_argument("--device", default="cuda", help="training device")
     parser.add_argument("-b", "--batch-size", default=4, type=int)
     parser.add_argument('--wd', '--weight-decay', default=1e-4, type=float,
