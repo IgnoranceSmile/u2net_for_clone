@@ -126,12 +126,13 @@ def main(args):
             # save_best
             if current_mae >= mae_info and current_f1 <= f1_info:
                 torch.save(save_file, "save_weights/model_best.pth")
+        
+        if epoch % 5 == 0:
+            # only save latest 10 epoch weights
+            if os.path.exists(f"save_weights/model_{epoch-10}.pth"):
+                os.remove(f"save_weights/model_{epoch-10}.pth")
 
-        # only save latest 10 epoch weights
-        if os.path.exists(f"save_weights/model_{epoch-10}.pth"):
-            os.remove(f"save_weights/model_{epoch-10}.pth")
-
-        torch.save(save_file, f"save_weights/model_{epoch}.pth")
+            torch.save(save_file, f"save_weights/model_{epoch}.pth")
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
